@@ -1,0 +1,68 @@
+%Display Image 
+p=imread('desert.jpg');
+axes(handles.axes1);
+imshow(p),title('Display Image');
+
+%Display Binary Image 
+p=imread('desert.jpg');
+pbw=im2bw(p);
+axes(handles.axes2);
+imshow(pbw),title('Display Binary Image');
+
+%Average Filter
+p=imread('desert.jpg');
+f=fsepcial('average');
+pfilter=imfilter(p,f);
+axes(handles.axes3);
+imshow(pfilter),title('Average Filter');
+
+%Gaussian Filter
+p=imread('desert.jpg');
+f=fsepcial('gaussian');
+pfilter=imfilter(p,f);
+axes(handles.axes4);
+imshow(pfilter),title('Gaussian Filter');
+
+%Median Filter
+p=imread('desert.jpg');
+pfilter=medfilt2(p);
+axes(handles.axes5);
+imshow(pfilter),title('Median Filter');
+
+%Add noise To Image
+p=imread('desert.jpg');
+pnoise=imnoise(p,'salt & pepper',0.02);
+axes(handles.axes6);
+imshow(pnoise),title('Add noise To Image');
+---------------------------------------------------------------------------------------------------
+%Add or Sub or Divide or Muultply To Image
+p=imread('desert.jpg');
+padd=p+34;
+axes(handles.axes7);
+imshow(padd),title('Add To Image');
+
+%Gamma Correction
+p=imread('desert.jpg');
+pcontrast=imadjust(p,[],[],0.5);
+axes(handles.axes8);
+imshow(pcontrast),title('Gamma Correction');
+
+%Histogram 
+p=imread('desert.jpg');
+peq=histeq(p);
+axes(handles.axes9);
+imhist(peq),title('Histogram');
+
+%Edge Detection
+p=imread('desert.jpg');
+e=edge(p,'sobel');
+axes(handles.axes10);
+imshow(e),title('Edge Detection');
+
+%Task in next section(Select image from pc and show it)
+[filename path]=uigetfile({'*.jpg'},"open file")
+fullpath=strcat(path,filename)
+p=imread(fullpath);
+axes(handles.axes11);
+imshow(p),title('select image');
+---------------------------------------------------------------------------------------------------
